@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[Driver created successfully]]>
+    </line>
+    <line>
+      <![CDATA[Executing Test Case 'TC_01_ValidPurchase' in 'chrome' browser]]>
+    </line>
+    <line>
+      <![CDATA[Going to start Pillow purchase Transaction]]>
+    </line>
+    <line>
+      <![CDATA[Sample Store Home Page verified]]>
+    </line>
+    <line>
+      <![CDATA[Buy Now button clicked sucessfully]]>
+    </line>
+    <line>
+      <![CDATA[Test Case Completed and calling quit driver]]>
+    </line>
+  </reporter-output>
+  <suite name="Gojek-TestSuite" duration-ms="14250" started-at="2019-11-16T04:28:42Z" finished-at="2019-11-16T04:28:56Z">
+    <groups>
+    </groups>
+    <test name="TC_01_ValidPurchase" duration-ms="14250" started-at="2019-11-16T04:28:42Z" finished-at="2019-11-16T04:28:56Z">
+      <class name="com.test.gojek.tests.BuyingPillowSuccessTest">
+        <test-method status="PASS" signature="beforeTest(java.lang.String)[pri:0, instance:com.test.gojek.tests.BuyingPillowSuccessTest@224edc67]" name="beforeTest" is-config="true" duration-ms="11960" started-at="2019-11-16T09:58:42Z" finished-at="2019-11-16T09:58:54Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Driver created successfully]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="purchasePillowUsingValidPaymentDetails(java.lang.String, java.lang.String)[pri:0, instance:com.test.gojek.tests.BuyingPillowSuccessTest@224edc67]" name="purchasePillowUsingValidPaymentDetails" duration-ms="1427" started-at="2019-11-16T09:58:54Z" finished-at="2019-11-16T09:58:55Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[TC_01_ValidPurchase]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Executing Test Case 'TC_01_ValidPurchase' in 'chrome' browser]]>
+            </line>
+            <line>
+              <![CDATA[Going to start Pillow purchase Transaction]]>
+            </line>
+            <line>
+              <![CDATA[Sample Store Home Page verified]]>
+            </line>
+            <line>
+              <![CDATA[Buy Now button clicked sucessfully]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- purchasePillowUsingValidPaymentDetails -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:com.test.gojek.tests.BuyingPillowSuccessTest@224edc67]" name="afterTest" is-config="true" duration-ms="833" started-at="2019-11-16T09:58:55Z" finished-at="2019-11-16T09:58:56Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Case Completed and calling quit driver]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- com.test.gojek.tests.BuyingPillowSuccessTest -->
+    </test> <!-- TC_01_ValidPurchase -->
+  </suite> <!-- Gojek-TestSuite -->
+</testng-results>

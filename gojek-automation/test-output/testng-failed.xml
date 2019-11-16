@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Gojek-TestSuite]" parallel="tests">
+  <test name="TC_01_ValidPurchase(failed)" parallel="tests">
+    <parameter name="browser" value="chrome"/>
+    <parameter name="testCaseId" value="TC_01_ValidPurchase"/>
+    <classes>
+      <class name="com.test.gojek.tests.BuyingPillowSuccessTest">
+        <methods>
+          <include name="purchasePillowUsingValidPaymentDetails" invocation-numbers="0"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+        </methods>
+      </class> <!-- com.test.gojek.tests.BuyingPillowSuccessTest -->
+    </classes>
+  </test> <!-- TC_01_ValidPurchase(failed) -->
+</suite> <!-- Failed suite [Gojek-TestSuite] -->

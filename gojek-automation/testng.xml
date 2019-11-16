@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="Gojek-TestSuite" parallel="tests">
+
+	<test name="TC_01_ValidPurchase">
+    <parameter name="testCaseId" value="TC_01_ValidPurchase"/>
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="com.test.gojek.tests.BuyingPillowSuccessTest"/>
+    </classes>
+  </test> 
+  
+
+</suite> <!-- Gojek-TestSuite -->
