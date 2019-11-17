@@ -13,18 +13,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-
 public class CommonFunction {
 	private WebDriver driver;
 	private static final Logger LOGGER = Logger.getLogger(CommonFunction.class.getName());
-	
-	public CommonFunction (WebDriver driver){
+
+	public CommonFunction(WebDriver driver) {
 		this.driver = driver;
 	}
-	
+
 	/**
 	 * This method will click any element or button on page if it is enabled
-	 * @param selector Locator used to locate UI element
+	 * 
+	 * @param selector
+	 *            Locator used to locate UI element
 	 * 
 	 */
 	public void clickElement(By selector) {
@@ -43,11 +44,12 @@ public class CommonFunction {
 			Assert.fail("Elelemnt " + selector + " could not be clicked because - " + e1);
 		}
 	}
-	
+
 	/**
 	 * 
-	 * @param ele Locator used to locate UI Web Element 
-	 * @return Return boolean value as true if  element is found in page
+	 * @param ele
+	 *            Locator used to locate UI Web Element
+	 * @return Return boolean value as true if element is found in page
 	 */
 	public boolean isElementDisplayed(WebElement ele) {
 		try {
@@ -62,11 +64,11 @@ public class CommonFunction {
 		return false;
 	}
 
-	
 	/**
 	 * 
-	 * @param ele Locator used to locate UI Web Element 
-	 * @return Return boolean value as true if  element is found in page
+	 * @param ele
+	 *            Locator used to locate UI Web Element
+	 * @return Return boolean value as true if element is found in page
 	 */
 	public boolean isElementDisplayed(By selector) {
 		try {
@@ -81,11 +83,13 @@ public class CommonFunction {
 		return false;
 	}
 
-	
 	/**
 	 * This method will set value in any text box located by locator method
-	 * @param selector Locator used to locate UI element
-	 * @param val Value that needs to be set in test field
+	 * 
+	 * @param selector
+	 *            Locator used to locate UI element
+	 * @param val
+	 *            Value that needs to be set in test field
 	 */
 	public void setValue(By selector, String val) {
 		try {
@@ -104,17 +108,17 @@ public class CommonFunction {
 			Assert.fail("Value could not be set in element - " + selector + "  because - " + e2);
 		}
 	}
-	
-	
+
 	/**
 	 * 
-	 * @param selector Locator used to locate UI element
+	 * @param selector
+	 *            Locator used to locate UI element
 	 * @return Return string text of located Web Element
 	 */
 	public String getText(By selector) {
 		return driver.findElement(selector).getText().trim();
 	}
-	
+
 	/**
 	 * This method waits for 1 seconds
 	 */
@@ -124,7 +128,7 @@ public class CommonFunction {
 		} catch (InterruptedException e1) {
 		}
 	}
-	
+
 	/**
 	 * This method waits for 1 * 1000 milliseconds
 	 */
@@ -134,8 +138,7 @@ public class CommonFunction {
 		} catch (InterruptedException e1) {
 		}
 	}
-	
-	
+
 	public String getAtrributeValue(By selector, String attributeName) {
 		String attributValue = null;
 		try {
@@ -148,23 +151,7 @@ public class CommonFunction {
 		}
 		return attributValue;
 	}
-	
-	
-	public boolean checkElementPresence(By selector) {
-		try {
-			driver.findElement(selector);
-			LOGGER.info("Element present - " + selector);
-			return true;
-		} catch (NoSuchElementException e) {
-			LOGGER.info("Element NOT present - " + selector);
-			return false;
-		} catch (StaleElementReferenceException e1) {
-			LOGGER.info("Element NOT present");
-			return false;
-		}
-	}
-	
-	
+
 	public void waitForElement(By selector) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 15);
@@ -175,8 +162,8 @@ public class CommonFunction {
 			LOGGER.info("Element NOT present");
 		}
 	}
-	
-	public WebElement returnElement (By selector) {
+
+	public WebElement returnElement(By selector) {
 		try {
 			LOGGER.info("Element present - " + selector);
 			return driver.findElement(selector);
@@ -187,19 +174,12 @@ public class CommonFunction {
 		}
 		return null;
 	}
-	
-	public void clickUsingJavaScript (By selector) {
-		//Creating the JavascriptExecutor interface object by Type casting		
-        JavascriptExecutor js = (JavascriptExecutor)driver;		
-        WebElement button = returnElement(selector);		
-        //Perform Click on LOGIN button using JavascriptExecutor		
-        js.executeScript("arguments[0].click();", button);
-        LOGGER.info("Successfully clicked "+selector+"  button");
-	}
-	
-	public void setValueUsingJavaScript (By selector, String attributeName, String value) {
-        JavascriptExecutor js = (JavascriptExecutor)driver;		
-        js.executeScript("document.getElementById('PaRes').value='"+value+"'");
+
+	public void clickUsingJavaScript(By selector) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebElement button = returnElement(selector);
+		js.executeScript("arguments[0].click();", button);
+		LOGGER.info("Successfully clicked " + selector + "  button");
 	}
 
 	public void switchToDefaultFrame() {

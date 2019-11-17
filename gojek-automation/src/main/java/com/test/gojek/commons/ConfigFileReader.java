@@ -8,20 +8,18 @@ import java.util.Properties;
 
 import com.test.gojek.constants.ApplicationConstants;
 
-
-public class ConfigFileReader implements ApplicationConstants{	
+public class ConfigFileReader implements ApplicationConstants {
 	private Properties properties;
-	private final String propertyFilePath= System.getProperty("user.dir")+"/src/main/java/com/test/gojek/configs/Configuration.properties";
-	static ConfigFileReader  configFileReader;
+	private final String propertyFilePath = System.getProperty("user.dir") + "/Configuration.properties";
+	static ConfigFileReader configFileReader;
 
 	private ConfigFileReader() {
 	}
-	
+
 	public static ConfigFileReader getConfigReader() {
 		return (configFileReader == null) ? new ConfigFileReader() : configFileReader;
 	}
-	
-	
+
 	public Properties loadReader() {
 		BufferedReader reader;
 		try {

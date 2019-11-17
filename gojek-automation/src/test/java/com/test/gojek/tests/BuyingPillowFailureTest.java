@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
 import com.test.gojek.commons.ConfigFileReader;
+import com.test.gojek.extentreport.ExtentTestManager;
 import com.test.gojek.managers.PageObjectManager;
 import com.test.gojek.managers.WebDriverManager;
 import com.test.gojek.pages.CreditCardInfoPage;
@@ -40,8 +41,8 @@ public class BuyingPillowFailureTest {
 	@Test
 	@Parameters ({ "testCaseId", "browser" })
 	public void purchasePillowUsingInvalidPaymentDetails(String testCaseId, String browser){
-		printAllLogs(Status.INFO, "Executing Test Case '"+testCaseId+ "' in '"+browser+"' browser" );
-		printAllLogs(Status.INFO, "Going to start Pillow purchase Transaction with invalid payment details");
+		printLogger(Status.INFO, "Executing Test Case '"+testCaseId+ "' in '"+browser+"' browser" );
+		printLogger(Status.INFO, "Going to start Pillow purchase Transaction with invalid payment details");
 		
 		pageObjManager = new PageObjectManager(driver);
 		homePage = pageObjManager.getHomePage();
@@ -52,50 +53,50 @@ public class BuyingPillowFailureTest {
 		
 		//Asserting Home page
 		assertEquals(driver.getTitle().trim(), "Sample Store");
-		printAllLogs(Status.INFO, "Sample Store Home Page verified");
+		printLogger(Status.INFO, "Sample Store Home Page verified");
 		
 		homePage.validateMidTransPillowElementDisplayed();
 		
 		homePage.clickBuyNowBtn();
-		printAllLogs(Status.INFO, "Buy Now button clicked sucessfully");
+		printLogger(Status.INFO, "Buy Now button clicked sucessfully");
 		
 		Assert.assertTrue(shopCartPg.isShoppingcartPageDisplayed());
-		printAllLogs(Status.INFO, "In shopping cart page");
+		printLogger(Status.INFO, "In shopping cart page");
 		
 		//Since all field values are already pre-filled so just getting each value and setting again in same
 		String midTransPillowAmt = shopCartPg.getAttributeValuesFromEachInputLocator("Midtrans Pillow");
 		shopCartPg.setAttributeValueInEachInputTextField("Midtrans Pillow", midTransPillowAmt);
-		printAllLogs(Status.INFO, "Pillow Amount '"+midTransPillowAmt+"' set succsessfully");
+		printLogger(Status.INFO, "Pillow Amount '"+midTransPillowAmt+"' set succsessfully");
 		
 		String customerName = shopCartPg.getAttributeValuesFromEachInputLocator("Name");
 		shopCartPg.setAttributeValueInEachInputTextField("Name", customerName);
-		printAllLogs(Status.INFO, "Customer Name '"+customerName+"' entered succsessfully");
+		printLogger(Status.INFO, "Customer Name '"+customerName+"' entered succsessfully");
 		
 		String customerEmailId = shopCartPg.getAttributeValuesFromEachInputLocator("Email");
 		shopCartPg.setAttributeValueInEachInputTextField("Email", customerEmailId);
-		printAllLogs(Status.INFO, "Customer Email '"+customerEmailId+"' entered succsessfully");
+		printLogger(Status.INFO, "Customer Email '"+customerEmailId+"' entered succsessfully");
 		
 		String customerPhoneNumber = shopCartPg.getAttributeValuesFromEachInputLocator("Phone no");
 		shopCartPg.setAttributeValueInEachInputTextField("Phone no", customerPhoneNumber);
-		printAllLogs(Status.INFO, "Customer Phone No. '"+customerPhoneNumber+"' entered succsessfully");
+		printLogger(Status.INFO, "Customer Phone No. '"+customerPhoneNumber+"' entered succsessfully");
 		
 		String custmCity = shopCartPg.getAttributeValuesFromEachInputLocator("City");
 		shopCartPg.setAttributeValueInEachInputTextField("City", custmCity);
-		printAllLogs(Status.INFO, "Customer City '"+custmCity+"' entered succsessfully");
+		printLogger(Status.INFO, "Customer City '"+custmCity+"' entered succsessfully");
 		
 		String custmAddress = shopCartPg.getAttributeValuesFromEachTextAreaLocator("Address");
 		shopCartPg.setAttributeValueInEachTextAreaField("Address", custmAddress);
-		printAllLogs(Status.INFO, "Customer Address '"+custmAddress+"' entered succsessfully");
+		printLogger(Status.INFO, "Customer Address '"+custmAddress+"' entered succsessfully");
 		
 		String custmPostal = shopCartPg.getAttributeValuesFromEachInputLocator("Postal Code");
 		shopCartPg.setAttributeValueInEachInputTextField("Postal Code", custmPostal);
-		printAllLogs(Status.INFO, "Customer Postal Code '"+custmPostal+"' entered succsessfully");
+		printLogger(Status.INFO, "Customer Postal Code '"+custmPostal+"' entered succsessfully");
 		
 		shopCartPg.clickCheckOutBtn();
-		printAllLogs(Status.INFO, "Check Out button clicked succsessfully");
+		printLogger(Status.INFO, "Check Out button clicked succsessfully");
 		
 		Assert.assertTrue(ordrSummaryPg.isOrderSummaryPageDisplayed());
-		printAllLogs(Status.INFO, "Order summary page displayed succsessfully");
+		printLogger(Status.INFO, "Order summary page displayed succsessfully");
 		
 		Assert.assertEquals(ordrSummaryPg.getOrdSumaryPageItemNameElement().getText(), "Midtrans Pillow");
 		Assert.assertEquals(ordrSummaryPg.getOrdSumaryPageItemAmountElement().getText().replaceAll("[^a-zA-Z0-9]", ""), midTransPillowAmt);
@@ -107,37 +108,37 @@ public class BuyingPillowFailureTest {
 		Assert.assertTrue(ordrSummaryPg.getOrdSumaryPhnNumberElement().getText().contains(customerPhoneNumber.substring(1)));
 		Assert.assertEquals(ordrSummaryPg.getOrdSumaryAddressElement().getText(), custmAddress + " "+custmCity+" "+custmPostal);
 		
-		printAllLogs(Status.INFO, "All shipping detail info validated successfully");
+		printLogger(Status.INFO, "All shipping detail info validated successfully");
 		
 		ordrSummaryPg.clickContinuBtn();
-		printAllLogs(Status.INFO, "Continue Button clicked succsessfully in Shipping Info Page");
+		printLogger(Status.INFO, "Continue Button clicked succsessfully in Shipping Info Page");
 		
 		Assert.assertTrue(paymentPage.isPaymentPageDisplayed());
-		printAllLogs(Status.INFO, "Payment page displayed sucessfully");
+		printLogger(Status.INFO, "Payment page displayed sucessfully");
 		
 		paymentPage.clickCreditCardPayLinkTxt();
 		
 		
 		Assert.assertTrue(cardPage.isCreditCardPageDisplayed());
-		printAllLogs(Status.INFO, "Credit Card payment page dislayed successfully");
+		printLogger(Status.INFO, "Credit Card payment page dislayed successfully");
 		
 		cardPage.setCardDetails(prop.getProperty("invalidCardNumber"), 
 				prop.getProperty("cardExpDate"), prop.getProperty("cardCvv"));
 		
-		printAllLogs(Status.INFO, "All card details esntered successfully");
+		printLogger(Status.INFO, "All card details esntered successfully");
 		
 		cardPage.clickPayNowBtn();
 		
 		cardPage.setOtp(prop.getProperty("cardOtp"));
-		printAllLogs(Status.INFO, "Otp eneterd successfully");
+		printLogger(Status.INFO, "Otp eneterd successfully");
 		
 		if (cardPage.chkPaymentFailureMessage()) {
 			Assert.assertTrue(cardPage.chkCardDeclineErrorMessage());
-			printAllLogs(Status.PASS, "Payment failed message displayed successfully as '"+cardPage.getCardDeclineErrorMessage()+"'.");
+			printLogger(Status.PASS, "Payment failed message displayed successfully as '"+cardPage.getCardDeclineErrorMessage()+"'.");
 			cardPage.clickRetryBtn();
 		} else {
 			Assert.fail("Payment did not failed for the Mid-Trans pillow with wrong Card number");
-			printAllLogs(Status.FAIL, "Payment failed message did not get displayed");
+			printLogger(Status.FAIL, "Payment failed message did not get displayed");
 		}
 	}
 
@@ -146,7 +147,8 @@ public class BuyingPillowFailureTest {
 	 * @param info Message type like pass/fail/info
 	 * @param message Message to be displayed in report
 	 */
-	private void printAllLogs(Status info, String message) {
+	private void printLogger(Status info, String message) {
+		ExtentTestManager.getTest().log(info, message);
 		Reporter.log(message);
 		LOGGER.info(message);
 	}
@@ -169,9 +171,9 @@ public class BuyingPillowFailureTest {
 		try{
 			driver.quit();
 			driver=null;
-			printAllLogs(Status.INFO, "Test Case Completed and calling quit driver");
+			printLogger(Status.INFO, "Test Case Completed and calling quit driver");
 		} catch (Exception e){
-			printAllLogs(Status.INFO, "Test Case failed -"+e);
+			printLogger(Status.INFO, "Test Case failed -"+e);
 		}
 	}
 }

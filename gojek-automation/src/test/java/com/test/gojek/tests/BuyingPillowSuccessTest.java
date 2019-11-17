@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
 import com.test.gojek.commons.ConfigFileReader;
+import com.test.gojek.extentreport.ExtentTestManager;
 import com.test.gojek.managers.PageObjectManager;
 import com.test.gojek.managers.WebDriverManager;
 import com.test.gojek.pages.CreditCardInfoPage;
@@ -156,6 +157,7 @@ public class BuyingPillowSuccessTest {
 	 * @param message Message to be displayed in report
 	 */
 	private void printAllLogs(Status info, String message) {
+		ExtentTestManager.getTest().log(info, message);
 		Reporter.log(message);
 		LOGGER.info(message);
 	}

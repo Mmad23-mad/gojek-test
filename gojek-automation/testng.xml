@@ -2,22 +2,42 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="2" name="Gojek-TestSuite" parallel="tests">
 
-	<test name="TC_01_ValidPurchase">
-    <parameter name="testCaseId" value="TC_01_ValidPurchase"/>
-    <parameter name="browser" value="chrome"/>
-    <classes>
-      <class name="com.test.gojek.tests.BuyingPillowSuccessTest"/>
-    </classes>
-  </test> 
-  
-  <test name="TC_02_ValidPurchase">
-    <parameter name="testCaseId" value="TC_02_ValidPurchase"/>
-    <parameter name="browser" value="firefox"/>
-    <classes>
-      <class name="com.test.gojek.tests.BuyingPillowSuccessTest"/>
-    </classes>
-  </test> 
-  
-  
+	<listeners>
+		<listener class-name="com.test.gojek.extentreport.TestListener" />
+	</listeners>
+
+	<test name="TC_01_ValidPillowPurchaseTest">
+		<parameter name="testCaseId" value="TC_01_ValidPillowPurchaseTest" />
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.test.gojek.tests.BuyingPillowSuccessTest" />
+		</classes>
+	</test>
+
+	<test name="TC_02_ValidPillowPurchaseTest">
+		<parameter name="testCaseId" value="TC_02_ValidPillowPurchaseTest" />
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="com.test.gojek.tests.BuyingPillowSuccessTest" />
+		</classes>
+	</test>
+
+	<test name="TC_03_InValidPillowPurchaseTest">
+		<parameter name="testCaseId" value="TC_03_InValidPillowPurchaseTest" />
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.test.gojek.tests.BuyingPillowFailureTest" />
+		</classes>
+	</test>
+
+	<test name="TC_04_InValidPillowPurchaseTest">
+		<parameter name="testCaseId" value="TC_04_InValidPillowPurchaseTest" />
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="com.test.gojek.tests.BuyingPillowFailureTest" />
+		</classes>
+	</test>
+
+
 
 </suite> <!-- Gojek-TestSuite -->
