@@ -14,12 +14,7 @@ import com.test.gojek.commons.ConfigFileReader;
 import com.test.gojek.constants.ApplicationConstants;
 import com.test.gojek.enums.Browser;
 
-/**
- * 
- * @author Swati
- * This class helps to create WebDriver instance using Singleton design.
- * 
- */
+
 public class WebDriverManager implements ApplicationConstants{
 	private WebDriver driver;
 	private Browser browserType;

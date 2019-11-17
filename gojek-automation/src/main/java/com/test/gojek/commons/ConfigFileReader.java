@@ -8,12 +8,7 @@ import java.util.Properties;
 
 import com.test.gojek.constants.ApplicationConstants;
 
-/**
- * 
- * @author Swati
- * This class helps to write property variable using Singleton design.
- * 
- */
+
 public class ConfigFileReader implements ApplicationConstants{	
 	private Properties properties;
 	private final String propertyFilePath= System.getProperty("user.dir")+"/src/main/java/com/test/gojek/configs/Configuration.properties";

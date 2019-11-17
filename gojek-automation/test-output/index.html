@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Gojek-TestSuite">
-              <span class="suite-name border-passed">Gojek-TestSuite</span>
+              <span class="suite-name border-failed">Gojek-TestSuite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -54,7 +54,7 @@
                 </li>
                 <li>
                   <a href="#" class="navigator-link " panel-name="testlist-Gojek-TestSuite">
-                    <span class="test-stats">1 test</span>
+                    <span class="test-stats">2 tests</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,21 +91,26 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods, 2 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Gojek-TestSuite" class="hide-methods passed suite-Gojek-TestSuite"> (hide)</a> <!-- hide-methods passed suite-Gojek-TestSuite -->
-                      <a href="#" panel-name="suite-Gojek-TestSuite" class="show-methods passed suite-Gojek-TestSuite"> (show)</a> <!-- show-methods passed suite-Gojek-TestSuite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Gojek-TestSuite" class="hide-methods failed suite-Gojek-TestSuite"> (hide)</a> <!-- hide-methods failed suite-Gojek-TestSuite -->
+                      <a href="#" panel-name="suite-Gojek-TestSuite" class="show-methods failed suite-Gojek-TestSuite"> (show)</a> <!-- show-methods failed suite-Gojek-TestSuite -->
                     </span>
-                    <div class="method-list-content passed suite-Gojek-TestSuite">
+                    <div class="method-list-content failed suite-Gojek-TestSuite">
                       <span>
-                        <img width="3%" src="passed.png"/>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Gojek-TestSuite" title="com.test.gojek.tests.BuyingPillowSuccessTest" hash-for-method="purchasePillowUsingValidPaymentDetails(TC_02_ValidPurchase, firefox)">purchasePillowUsingValidPaymentDetails(TC_02_ValidPurchase, firefox)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="failed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Gojek-TestSuite" title="com.test.gojek.tests.BuyingPillowSuccessTest" hash-for-method="purchasePillowUsingValidPaymentDetails(TC_01_ValidPurchase, chrome)">purchasePillowUsingValidPaymentDetails(TC_01_ValidPurchase, chrome)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Gojek-TestSuite -->
+                    </div> <!-- method-list-content failed suite-Gojek-TestSuite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -117,22 +122,46 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Gojek-TestSuite" class="panel Gojek-TestSuite">
-          <div class="suite-Gojek-TestSuite-class-passed">
+          <div class="suite-Gojek-TestSuite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.test.gojek.tests.BuyingPillowSuccessTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="purchasePillowUsingValidPaymentDetails(TC_02_ValidPurchase, firefox)">
+                  </a> <!-- purchasePillowUsingValidPaymentDetails(TC_02_ValidPurchase, firefox) -->
+                  <span class="method-name">purchasePillowUsingValidPaymentDetails</span>
+                  <span class="parameters">(TC_02_ValidPurchase, firefox)</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [true] but found [false]
+	at com.test.gojek.tests.BuyingPillowSuccessTest.purchasePillowUsingValidPaymentDetails(BuyingPillowSuccessTest.java:100)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 20 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
                   <a name="purchasePillowUsingValidPaymentDetails(TC_01_ValidPurchase, chrome)">
                   </a> <!-- purchasePillowUsingValidPaymentDetails(TC_01_ValidPurchase, chrome) -->
                   <span class="method-name">purchasePillowUsingValidPaymentDetails</span>
                   <span class="parameters">(TC_01_ValidPurchase, chrome)</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [true] but found [false]
+	at com.test.gojek.tests.BuyingPillowSuccessTest.purchasePillowUsingValidPaymentDetails(BuyingPillowSuccessTest.java:100)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 20 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Gojek-TestSuite-class-passed -->
+          </div> <!-- suite-Gojek-TestSuite-class-failed -->
         </div> <!-- panel Gojek-TestSuite -->
         <div panel-name="test-xml-Gojek-TestSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -142,7 +171,7 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite thread-count=&quot;1&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Gojek-TestSuite&quot; parallel=&quot;tests&quot;&gt;
+&lt;suite thread-count=&quot;2&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Gojek-TestSuite&quot; parallel=&quot;tests&quot;&gt;
   &lt;test name=&quot;TC_01_ValidPurchase&quot;&gt;
     &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
     &lt;parameter name=&quot;testCaseId&quot; value=&quot;TC_01_ValidPurchase&quot;/&gt;
@@ -150,6 +179,13 @@
       &lt;class name=&quot;com.test.gojek.tests.BuyingPillowSuccessTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- TC_01_ValidPurchase --&gt;
+  &lt;test name=&quot;TC_02_ValidPurchase&quot;&gt;
+    &lt;parameter name=&quot;browser&quot; value=&quot;firefox&quot;/&gt;
+    &lt;parameter name=&quot;testCaseId&quot; value=&quot;TC_02_ValidPurchase&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;com.test.gojek.tests.BuyingPillowSuccessTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- TC_02_ValidPurchase --&gt;
 &lt;/suite&gt; &lt;!-- Gojek-TestSuite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -162,6 +198,9 @@
             <ul>
               <li>
                 <span class="test-name">TC_01_ValidPurchase (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">TC_02_ValidPurchase (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -187,16 +226,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'purchasePillowUsingValidPaymentDetails')
 data.setCell(0, 2, 'com.test.gojek.tests.BuyingPillowSuccessTest')
-data.setCell(0, 3, 1427);
+data.setCell(0, 3, 37082);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'purchasePillowUsingValidPaymentDetails')
+data.setCell(1, 2, 'com.test.gojek.tests.BuyingPillowSuccessTest')
+data.setCell(1, 3, 36644);
 window.suiteTableData['Gojek-TestSuite']= { tableData: data, tableDiv: 'times-div-Gojek-TestSuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Gojek-TestSuite">
               </div> <!-- times-div-Gojek-TestSuite -->
             </div> <!-- times-div -->
@@ -208,12 +251,39 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="reporter-method-div">
+              <span class="reporter-method-name">purchasePillowUsingValidPaymentDetails(TC_02_ValidPurchase, firefox)</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">Executing Test Case 'TC_02_ValidPurchase' in 'firefox' browser</span>
+                <span class="reporter-method-output">Going to start Pillow purchase Transaction</span>
+                <span class="reporter-method-output">Sample Store Home Page verified</span>
+                <span class="reporter-method-output">Buy Now button clicked sucessfully</span>
+                <span class="reporter-method-output">In shopping cart page</span>
+                <span class="reporter-method-output">Pillow Amount '20000' set succsessfully</span>
+                <span class="reporter-method-output">Customer Name 'Budi' entered succsessfully</span>
+                <span class="reporter-method-output">Customer Email 'budi@utomo.com' entered succsessfully</span>
+                <span class="reporter-method-output">Customer Phone No. '081808466410' entered succsessfully</span>
+                <span class="reporter-method-output">Customer City 'Jakarta' entered succsessfully</span>
+                <span class="reporter-method-output">Customer Address 'MidPlaza 2, 4th Floor Jl.Jend.Sudirman Kav.10-11' entered succsessfully</span>
+                <span class="reporter-method-output">Customer Postal Code '10220' entered succsessfully</span>
+                <span class="reporter-method-output">Check Out button clicked succsessfully</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
               <span class="reporter-method-name">purchasePillowUsingValidPaymentDetails(TC_01_ValidPurchase, chrome)</span>
               <div class="reporter-method-output-div">
                 <span class="reporter-method-output">Executing Test Case 'TC_01_ValidPurchase' in 'chrome' browser</span>
                 <span class="reporter-method-output">Going to start Pillow purchase Transaction</span>
                 <span class="reporter-method-output">Sample Store Home Page verified</span>
                 <span class="reporter-method-output">Buy Now button clicked sucessfully</span>
+                <span class="reporter-method-output">In shopping cart page</span>
+                <span class="reporter-method-output">Pillow Amount '20000' set succsessfully</span>
+                <span class="reporter-method-output">Customer Name 'Budi' entered succsessfully</span>
+                <span class="reporter-method-output">Customer Email 'budi@utomo.com' entered succsessfully</span>
+                <span class="reporter-method-output">Customer Phone No. '081808466410' entered succsessfully</span>
+                <span class="reporter-method-output">Customer City 'Jakarta' entered succsessfully</span>
+                <span class="reporter-method-output">Customer Address 'MidPlaza 2, 4th Floor Jl.Jend.Sudirman Kav.10-11' entered succsessfully</span>
+                <span class="reporter-method-output">Customer Postal Code '10220' entered succsessfully</span>
+                <span class="reporter-method-output">Check Out button clicked succsessfully</span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -236,13 +306,29 @@ return data;
                 <span class="method-name">beforeTest(chrome)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeTest(firefox)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">purchasePillowUsingValidPaymentDetails(TC_02_ValidPurchase, firefox)</span>
+                <span class="method-start">11838 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">purchasePillowUsingValidPaymentDetails(TC_01_ValidPurchase, chrome)</span>
-                <span class="method-start">11960 ms</span>
+                <span class="method-start">12876 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterTest</span>
-                <span class="method-start">13388 ms</span>
+                <span class="method-start">48487 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <span class="method-name">afterTest</span>
+                <span class="method-start">49961 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -25,26 +25,23 @@ import com.test.gojek.pages.PaymentPage;
 import com.test.gojek.pages.ShoppingCartPage;
 
 
-
-public class BuyingPillowSuccessTest {
-	private static final Logger LOGGER = Logger.getLogger(BuyingPillowSuccessTest.class.getName());
+public class BuyingPillowFailureTest {
+	private static final Logger LOGGER = Logger.getLogger(BuyingPillowFailureTest.class.getName());
 	private WebDriver driver;
 	PageObjectManager pageObjManager;
 	HomePage homePage;
-	Properties prop;
 	ShoppingCartPage shopCartPg;
 	OrderSummaryPage ordrSummaryPg;
 	PaymentPage paymentPage;
 	CreditCardInfoPage cardPage;
+	Properties prop = ConfigFileReader.getConfigReader().loadReader();
 	
 	
 	@Test
 	@Parameters ({ "testCaseId", "browser" })
-	public void purchasePillowUsingValidPaymentDetails(String testCaseId, String browser){
+	public void purchasePillowUsingInvalidPaymentDetails(String testCaseId, String browser){
 		printAllLogs(Status.INFO, "Executing Test Case '"+testCaseId+ "' in '"+browser+"' browser" );
-		printAllLogs(Status.INFO, "Going to start Pillow purchase Transaction");
-		
-		prop = ConfigFileReader.getConfigReader().loadReader();
+		printAllLogs(Status.INFO, "Going to start Pillow purchase Transaction with invalid payment details");
 		
 		pageObjManager = new PageObjectManager(driver);
 		homePage = pageObjManager.getHomePage();
@@ -124,7 +121,7 @@ public class BuyingPillowSuccessTest {
 		Assert.assertTrue(cardPage.isCreditCardPageDisplayed());
 		printAllLogs(Status.INFO, "Credit Card payment page dislayed successfully");
 		
-		cardPage.setCardDetails(prop.getProperty("validCardNumber"), 
+		cardPage.setCardDetails(prop.getProperty("invalidCardNumber"), 
 				prop.getProperty("cardExpDate"), prop.getProperty("cardCvv"));
 		
 		printAllLogs(Status.INFO, "All card details esntered successfully");
@@ -134,19 +131,13 @@ public class BuyingPillowSuccessTest {
 		cardPage.setOtp(prop.getProperty("cardOtp"));
 		printAllLogs(Status.INFO, "Otp eneterd successfully");
 		
-		if (cardPage.chkPaymentSuccessMessage()) {
-			printAllLogs(Status.INFO, "Payment is successfull");
-			cardPage.clickDoneBtn();
-			pageObjManager.getCommonFunctionPage().switchToDefaultFrame();
-			driver.switchTo().defaultContent();
-			String succesMsg1 = homePage.getSuccessTransactionMessage1();
-			String succesMsg2 = homePage.getSuccessTransactionMessage2();
-			Assert.assertEquals(succesMsg1, "Thank you for your purchase.");
-			Assert.assertEquals(succesMsg2, "Get a nice sleep.");
-			printAllLogs(Status.PASS, "Purchase is successfull and message displayed as:  "+succesMsg1+" . "+succesMsg2);
+		if (cardPage.chkPaymentFailureMessage()) {
+			Assert.assertTrue(cardPage.chkCardDeclineErrorMessage());
+			printAllLogs(Status.PASS, "Payment failed message displayed successfully as '"+cardPage.getCardDeclineErrorMessage()+"'.");
+			cardPage.clickRetryBtn();
 		} else {
-			Assert.fail("Payment failed for the Mid-Trans pillow");
-			printAllLogs(Status.FAIL, "Payment failed for the Mid-Trans pillow with valid payment details");
+			Assert.fail("Payment did not failed for the Mid-Trans pillow with wrong Card number");
+			printAllLogs(Status.FAIL, "Payment failed message did not get displayed");
 		}
 	}
 
@@ -167,7 +158,7 @@ public class BuyingPillowSuccessTest {
 		// Creating Driver instance based on browser Type
 		try {
 			driver = new WebDriverManager().getDriver(browser);
-			Reporter.log("Driver created successfully");
+			Reporter.log(browser+" - Driver created successfully");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
